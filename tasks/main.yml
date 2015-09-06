@@ -8,7 +8,7 @@
 
 - name: Install Docker
   shell: curl -sSL https://get.docker.com/ | sh
-  when: is_installed.rc == 0
+  when: is_installed.rc != 0
 
 - name: Install (or update) docker package
   apt:
