@@ -13,3 +13,6 @@ docker_opts: ""
 
 # Set to 'false' or 'true' to enable updates (sets 'latest' in apt module)
 update_docker_package: no
+
+# Proxy configuration
+docker_http_proxy: ""

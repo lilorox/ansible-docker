@@ -17,6 +17,16 @@
     update_cache: yes
     cache_valid_time: 600
 
+- name: Set http proxy
+  copy:
+    content: "HTTP_PROXY=\"{{ http_proxy }}\""
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Reload docker
+  when: docker_http_proxy != ""
+
 - name: Set docker daemon options
   copy:
     content: "DOCKER_OPTS=\"{{ docker_opts.rstrip('\n') }}\""
