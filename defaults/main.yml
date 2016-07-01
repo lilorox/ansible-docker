@@ -16,3 +16,4 @@ update_docker_package: no
 
 # Proxy configuration
 docker_http_proxy: ""
+docker_https_proxy: ""

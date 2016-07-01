@@ -18,14 +18,22 @@
     cache_valid_time: 600
 
 - name: Set http proxy
-  copy:
-    content: "HTTP_PROXY=\"{{ http_proxy }}\""
-    owner: root
-    group: root
-    mode: 0644
+  lineinfile:
+    line: "HTTP_PROXY=\"{{ docker_http_proxy }}\""
+    regexp: "^HTTP_PROXY="
+    dest: /etc/default/docker
   notify:
     - Reload docker
   when: docker_http_proxy != ""
+
+- name: Set https proxy
+  lineinfile:
+    line: "HTTPS_PROXY=\"{{ docker_https_proxy }}\""
+    regexp: "^HTTPS_PROXY="
+    dest: /etc/default/docker
+  notify:
+    - Reload docker
+  when: docker_https_proxy != ""
 
 - name: Set docker daemon options
   copy:
