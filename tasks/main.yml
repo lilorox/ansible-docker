@@ -19,8 +19,8 @@
 
 - name: Set http proxy
   lineinfile:
-    line: "HTTP_PROXY=\"{{ docker_http_proxy }}\""
-    regexp: "^HTTP_PROXY="
+    line: "export http_proxy=\"{{ docker_http_proxy }}\""
+    regexp: "^export http_proxy="
     dest: /etc/default/docker
   notify:
     - Reload docker
@@ -28,8 +28,8 @@
 
 - name: Set https proxy
   lineinfile:
-    line: "HTTPS_PROXY=\"{{ docker_https_proxy }}\""
-    regexp: "^HTTPS_PROXY="
+    line: "export https_proxy=\"{{ docker_https_proxy }}\""
+    regexp: "^export https_proxy="
     dest: /etc/default/docker
   notify:
     - Reload docker
